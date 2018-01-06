@@ -1,0 +1,12 @@
+---
+- hosts: 
+    - production
+  become: yes
+  become_user: root
+  vars:
+    - letsencrypt_webroot_path: /root/m18x/server
+    - letsencrypt_cert_domain: api.m18x.com
+    - letsencrypt_email: thebillkidy@gmail.com
+    - letsencrypt_renewal_command_args: '--renew-hook "systemctl restart nginx"'
+  roles:
+    - ../roles/setup_letsencrypt

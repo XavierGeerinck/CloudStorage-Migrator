@@ -1,0 +1,73 @@
+---
+# Set root password
+# UPDATE mysql.user SET Password=PASSWORD('mysecret') WHERE User='root';
+# FLUSH PRIVILEGES;
+
+# - name: Set root Password
+#   mysql_user: name=root host={{ item }} password={{ mysql_root_password }} state=present
+#   with_items:
+#     - localhost
+#     - 127.0.0.1
+#     - ::1
+
+# - name: Reload privilege tables
+#   command: 'mysql -ne "{{ item }}"'
+#   with_items:
+#     - FLUSH PRIVILEGES
+#   changed_when: False
+
+# - name: Add .my.cnf
+#   template: src=my.cnf.j2 dest=/root/.my.cnf owner=root group=root mode=0600
+
+# - name: Remove anonymous users
+#   command: 'mysql -ne "{{ item }}"'
+#   with_items:
+#     - DELETE FROM mysql.user WHERE User=''
+#   changed_when: False
+
+# - name: Disallow root login remotely
+#   command: 'mysql -ne "{{ item }}"'
+#   with_items:
+#     - DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')
+#   changed_when: False
+
+# - name: Remove test database and access to it
+#   command: 'mysql -ne "{{ item }}"'
+#   with_items:
+#     - DROP DATABASE test
+#     - DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'
+#   changed_when: False
+#   ignore_errors: True
+
+# - name: Reload privilege tables
+#   command: 'mysql -ne "{{ item }}"'
+#   with_items:
+#     - FLUSH PRIVILEGES
+#   changed_when: False
+
+
+# MySQL database setup, this does the equivalent of mysql_secure_installation. 
+- name: Set the root password (might fail if done already).
+  mysql_user: name=root password={{ mysql_root_password }} host=localhost
+  ignore_errors: yes # We ignore errors here since it might fail if already initialized
+
+- name: Delete anonymous MySQL server user for {{ server_hostname }}
+  mysql_user: name="" host="{{ server_hostname }}" state="absent" login_user=root login_password={{ mysql_root_password }}
+
+- name: Delete anonymous MySQL server user for localhost
+  mysql_user: name="" state="absent" host=localhost login_user=root login_password={{ mysql_root_password }}
+
+- name: Secure the MySQL root user for IPV6 localhost (::1)
+  mysql_user: name="root" password="{{ mysql_root_password }}" host="::1" login_user=root login_password={{ mysql_root_password }}
+
+- name: Secure the MySQL root user for IPV4 localhost (127.0.0.1)
+  mysql_user: name="root" password="{{ mysql_root_password }}" host="127.0.0.1" login_user=root login_password={{ mysql_root_password }}
+
+- name: Secure the MySQL root user for localhost domain (localhost)
+  mysql_user: name="root" password="{{ mysql_root_password }}" host="localhost" login_user=root login_password={{ mysql_root_password }}
+
+- name: Secure the MySQL root user for {{ server_hostname }} domain
+  mysql_user: name="root" password="{{ mysql_root_password }}" host="{{ server_hostname }}" login_user=root login_password={{ mysql_root_password }}
+
+- name: Remove the MySQL test database
+  mysql_db: db=test state=absent login_user=root login_password={{ mysql_root_password }}

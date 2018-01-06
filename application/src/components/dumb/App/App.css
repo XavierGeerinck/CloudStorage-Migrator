@@ -1,0 +1,112 @@
+html, body, #root {
+  height: 100%;
+  background: rgba(0, 0, 0, 0) !important;
+
+  /* Allow to drag the window if no top bar */
+  -webkit-app-region: drag;
+}
+
+.Section-Header {
+  font-size: 20px;
+}
+
+.App {
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.App-StepConfirm {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.App-StepConfirm p {
+  text-align: center;
+}
+
+.App-Content {
+  position: relative;
+  background: #f1f1f1;
+  height: calc(100% - 303px - 70px);
+}
+
+.App-Content > div:not([class]) {
+  height: 100%;
+}
+
+button {
+  background: #333;
+  border: 2px solid #333;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+button:hover {
+  cursor: pointer;
+  background: 0;
+  border: 2px solid #333;
+  color: #333;
+}
+
+.button-disabled {
+  background: 0;
+  border: 2px solid #333;
+  color: #333;
+}
+
+.button-disabled:hover {
+  background: #333;
+  border: 2px solid #333;
+  color: white;
+}
+
+.Footer {
+  background-color: rgba(33, 33, 33, 0.8);
+  min-height: 70px;
+  width: 100%;
+  margin-top: auto; /* Stick to bottom */
+  text-align: center;
+  color: white;
+  line-height: 70px;
+}
+
+.Provider-Folder-Selected {
+  background-color: #f1f1f1;
+  color: #333;
+  font-weight: bold;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.Provider-Folder-Selected p {
+  display: inline-block;
+  margin: 12px 0;
+}
+
+.Provider-Folder-Selected span {
+  font-weight: normal;
+}
+
+.Provider-Folder-Selected button {
+  background-color: #333;
+  border: none;
+  padding: 0px 15px;
+  text-transform: uppercase;
+  color: white;
+  margin: 0;
+  border-radius: 5px;
+}
+
+.Provider-Folder-Selected button:hover {
+  cursor: pointer;
+  background-color: #545454;
+}
+.clear {
+  clear: both;
+}

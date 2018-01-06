@@ -1,0 +1,9 @@
+node_modules
+application/dist
+application/build
+ansible/profiles/*.retry
+ansible/hosts
+.vscode
+config.js
+application/build/
+application/dist/

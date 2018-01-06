@@ -1,0 +1,6 @@
+---
+- name: Install certain modules required by ansible
+  raw: apt-get install -y python-minimal
+  become: true
+  become_user: root
+  become_method: sudo

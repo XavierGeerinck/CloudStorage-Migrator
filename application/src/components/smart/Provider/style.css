@@ -1,0 +1,46 @@
+
+.Provider:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.Provider {
+  padding: 20px;
+  margin: 20px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  text-align: center;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-around;
+  align-self: center;
+}
+
+.Provider img {
+  height: 60px;
+  margin: 0 auto;
+}
+
+.Provider h1 {
+  font-size: 28px;
+  color: #333;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+.Provider-Selected {
+  display: flex;
+  background: #f1f1f1;
+  align-items: center;
+  padding: 10px 20px 0 20px;
+
+}
+.Provider-Selected img {
+  height: 30px;
+}
+
+.Provider-Selected h1 {
+  font-size: 20px;
+  margin-left: 10px;
+  color: #333;
+}

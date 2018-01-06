@@ -1,0 +1,41 @@
+.FileList {
+  padding: 20px;
+}
+
+.FileList-File {
+  display: flex;
+  border: 1px solid #E1E8EB;
+  padding: 20px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.FileList-File img {
+  height: 40px;
+  align-self: center;
+}
+
+.FileList-File-Details {
+  margin-left: 10px;
+  width: 100%;
+}
+
+.FileList-File-Details h1 {
+  font-size: 20px;
+  margin: 0 0 5px 0;
+}
+
+.FileList-File-Details h1 span {
+  float: right;
+  font-size: 14px;
+}
+
+.FileList-File-Details p {
+  font-size: 12px;
+  font-style: italic;
+  margin: 5px 0 0 0;
+}
+
+.FileList-File-Details p span {
+  float: right;
+}

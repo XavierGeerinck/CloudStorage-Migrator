@@ -1,0 +1,14 @@
+<svg width="200px"  height="200px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-facebook" style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%;">
+    <rect ng-attr-x="{{config.x1}}" ng-attr-y="{{config.y}}" ng-attr-width="{{config.width}}" ng-attr-height="{{config.height}}" ng-attr-fill="{{config.c1}}" x="17.5" y="42.5" width="15" height="15" fill="#ffffff">
+      <animate attributeName="y" calcMode="spline" values="38;42.5;42.5" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s" repeatCount="indefinite"></animate>
+      <animate attributeName="height" calcMode="spline" values="24;15;15" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s" repeatCount="indefinite"></animate>
+    </rect>
+    <rect ng-attr-x="{{config.x2}}" ng-attr-y="{{config.y}}" ng-attr-width="{{config.width}}" ng-attr-height="{{config.height}}" ng-attr-fill="{{config.c2}}" x="42.5" y="42.5" width="15" height="15" fill="#ffffff">
+      <animate attributeName="y" calcMode="spline" values="39.125;42.5;42.5" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s" repeatCount="indefinite"></animate>
+      <animate attributeName="height" calcMode="spline" values="21.750000000000004;15;15" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s" repeatCount="indefinite"></animate>
+    </rect>
+    <rect ng-attr-x="{{config.x3}}" ng-attr-y="{{config.y}}" ng-attr-width="{{config.width}}" ng-attr-height="{{config.height}}" ng-attr-fill="{{config.c3}}" x="67.5" y="42.5" width="15" height="15" fill="#ffffff">
+      <animate attributeName="y" calcMode="spline" values="40.25;42.5;42.5" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="0s" repeatCount="indefinite"></animate>
+      <animate attributeName="height" calcMode="spline" values="19.5;15;15" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="0s" repeatCount="indefinite"></animate>
+    </rect>
+  </svg>

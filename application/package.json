@@ -1,0 +1,46 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "main": "public/electron.js",
+  "author": "Xavier Geerinck",
+  "homepage": "./",
+  "dependencies": {
+    "electron-is-dev": "^0.3.0",
+    "env-paths": "^1.0.0",
+    "immutability-helper": "^2.4.0",
+    "import-lazy": "^3.1.0",
+    "query-string": "^5.0.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14",
+    "request": "^2.83.0",
+    "request-progress": "^3.0.0",
+    "throttled-queue": "^1.0.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "build --em.main=build/electron.js",
+    "preelectron-pack": "yarn build"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "electron": "^1.7.9",
+    "electron-builder": "^19.42.2",
+    "wait-on": "^2.0.2"
+  },
+  "build": {
+    "appId": "com.example.electron-cra",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
+}

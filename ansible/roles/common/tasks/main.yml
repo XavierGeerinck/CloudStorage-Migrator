@@ -1,0 +1,26 @@
+---
+- block:
+  - name: Update repository
+    apt: update_cache=yes
+  - name: Install required software
+    apt: name={{ item }} state=present
+    with_items:
+      - build-essential
+      - curl
+      - python-software-properties
+      - python3-pip
+      - python3-dev
+      - git
+      - zip
+      - wget
+      - dos2unix
+      - libssl-dev
+  - name: Set the hostname /etc/hostname
+    shell: echo {{ hostname }} > /etc/hostname
+    when: hostname is defined
+  - name: Set the hostname
+    shell: hostname {{ hostname }}
+    when: hostname is defined
+  become: true
+  become_method: sudo
+  become_user: root

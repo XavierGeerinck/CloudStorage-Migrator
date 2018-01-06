@@ -1,0 +1,29 @@
+.GDrive-FolderExplorer {
+
+}
+
+.GDrive-FolderExplorer-Folder {
+  padding: 10px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: left;
+  font-size: 14px;
+}
+
+.GDrive-FolderExplorer-Folder:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.GDrive-FolderExplorer-Folder img {
+  margin-top: 0px;
+  height: 14px;
+
+}
+
+.GDrive-FolderExplorer-Folder span {
+  margin-left: 22px;
+}
+
+.GDrive-FolderExplorer-Folder span:hover {
+  text-decoration: underline;
+}

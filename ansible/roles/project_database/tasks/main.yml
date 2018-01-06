@@ -1,0 +1,20 @@
+---
+- name: Set up the initial project Database
+  mysql_db: name={{ project_dbname }} state=present login_password={{ mysql_root_password }} login_user=root
+
+- name: Install Sequelize
+  command: npm install -g sequelize-cli
+  become: true
+  become_method: sudo
+  become_user: root
+
+- name: Run the migrations
+  shell: NODE_ENV={{ project_environment }} sequelize db:migrate
+  args:
+    chdir: "{{ project_files }}/code/backend/dao"
+
+- name: Initialize the database with seed data (when environment is staging)
+  shell: NODE_ENV={{ project_environment }} sequelize db:seed:all
+  args:
+    chdir: "{{ project_files }}/code/backend/dao"
+  when: project_environment != "production"

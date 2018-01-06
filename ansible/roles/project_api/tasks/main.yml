@@ -1,0 +1,36 @@
+---
+# Configure NGINX to forward to node
+- name: Copy site configuration - API
+  template: src=nginx_api.conf.j2
+            dest=/etc/nginx/sites-available/{{ api_url }}
+  become: true
+  become_method: sudo
+  become_user: root
+
+- name: Enable site configuration - API
+  file: src=/etc/nginx/sites-available/{{ api_url }}
+        dest=/etc/nginx/sites-enabled/{{ api_url }}
+        state=link
+  become: true
+  become_method: sudo
+  become_user: root
+  notify:
+    - restart nginx
+
+# Configure Systemd
+- name: Copy Systemd Configuration - API
+  template: src=systemd_api.service.j2
+            dest=/etc/systemd/system/api_{{ api_environment }}.service
+  become: true
+  become_method: sudo
+  become_user: root
+  notify:
+    - reload systemd
+
+# Enable Systemd
+- name: Enabling - API
+  shell: systemctl enable api_{{ api_environment }}
+
+# Start Systemd Process
+- name: API - Restarting backend_{{ api_environment }}
+  shell: systemctl restart api_{{ api_environment }}

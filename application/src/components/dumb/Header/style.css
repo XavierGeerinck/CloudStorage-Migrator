@@ -1,0 +1,72 @@
+.Header {
+  background-color: rgba(33, 33, 33, 0.8);
+}
+
+.Header p {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+}
+
+.Header h1 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 100;
+  color: white;
+}
+
+.Menu {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 60px;
+}
+
+.MenuItem {
+  text-align: center;
+  padding: 20px 5px;
+  color: #a3aeba;
+
+  position: relative;
+
+  /* Set equal width to items */
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.MenuItem img {
+  height: 80px;
+  width: 80px;
+}
+
+.MenuItem button {
+  background: none;
+  border: 2px solid rgba(204, 204, 204, 0.1);
+  width: 80%;
+  padding: 10px 0;
+  margin-top: 20px;
+  color: rgba(204, 204, 204, 0.1);
+}
+
+.MenuItem:not(:first-child):before {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgba(204, 204, 204, 0.1);
+  width: 100px;
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 0;
+  margin-left: -50px;
+}
+
+.MenuItem-Active:not(:first-child):before {
+  border-top: 1px solid rgba(204, 204, 204);
+}
+
+.MenuItem-Active button {
+  border: 2px solid white;
+  background: white;
+  color: black;
+}

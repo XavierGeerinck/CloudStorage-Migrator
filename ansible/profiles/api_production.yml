@@ -1,0 +1,23 @@
+---
+- hosts: 
+    - production
+  vars_files:
+    - variables.yml
+  vars:
+    - api_environment: production
+    - api_url: api.m18x.com
+    - api_ip: 127.0.0.1
+    - api_port: 8000
+    - api_files_location: /root/m18x/server
+    - api_db_url: null
+  roles:
+    - ../roles/project_api
+  tasks: 
+    - block:
+      - name: API - Restarting api_{{ environment }}
+        shell: systemctl restart api_{{ environment }}
+      become: true
+      become_method: sudo
+      become_user: root
+
+      

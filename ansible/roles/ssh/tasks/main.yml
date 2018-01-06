@@ -1,0 +1,8 @@
+---
+- name: Generate SSH keys
+  shell: ssh-keygen -b 4096 -t rsa -f /root/.ssh/id_rsa -q -N ""
+  args:
+    creates: /root/.ssh/id_rsa
+  become: true
+  become_method: sudo
+  become_user: root

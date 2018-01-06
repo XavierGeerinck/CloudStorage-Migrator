@@ -1,0 +1,13 @@
+[Unit]
+Description=API Server {{ api_environment }}
+After=network.target
+
+[Service]
+Environment="NODE_ENV={{ api_environment }}"
+Environment="DATABASE_URL={{ api_db_url }}"
+WorkingDirectory={{ api_files_location }}
+ExecStart=/usr/bin/npm start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

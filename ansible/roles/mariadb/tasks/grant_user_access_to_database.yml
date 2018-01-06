@@ -1,0 +1,3 @@
+---
+- name: Grant user {{ dbuser }} full access to {{ dbname }}  priv="*.{{ dbname }}:ALL"
+  mysql_user: name={{ dbuser }} append_privs=true priv='{{ dbname }}.*:ALL' host='%' state=present login_password={{ mysql_root_password }} login_user=root

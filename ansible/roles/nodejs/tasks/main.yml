@@ -1,0 +1,6 @@
+---
+- name: Add repositories
+  shell: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+
+- name: Install Node.js
+  apt: name=nodejs state=present

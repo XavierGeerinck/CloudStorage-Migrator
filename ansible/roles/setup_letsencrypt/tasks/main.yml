@@ -1,0 +1,20 @@
+---
+  - name: Add apt-repo
+    shell: add-apt-repository ppa:certbot/certbot
+
+  - name: Install certbot
+    apt: name="certbot" update_cache="yes"
+
+  - name: Create /var/www/letsencrypt
+    file: path=/var/www/letsencrypt state=directory owner="www-data" group="www-data"
+
+  - name: Get Certificate manually
+    shell: certbot certonly -n --webroot -w /var/www/letsencrypt -d {{ letsencrypt_cert_domain }} -m {{ letsencrypt_email }} --agree-tos
+    notify:
+      - restart nginx
+
+  - name: Remove old CRON jobs
+    cron: name="certbot_renew_ {{ letsencrypt_cert_domain }}" state=absent
+
+  - name: Set renewal CRON
+    cron: name="certbot_renew_ {{ letsencrypt_cert_domain }}" minute="0" hour="0" day="1" month="JAN,MAR,MAY,JUL,SEP,NOV" week="*" job="sudo certbot renew"

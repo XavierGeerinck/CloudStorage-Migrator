@@ -1,0 +1,39 @@
+---
+# Show info about the Agent Forwarding
+# if SSH_AUTH_SOCK is empty --> Check if ssh-add -l shows something 
+#     if no output, start with: eval "$(ssh-agent)"; ssh-add -D; ssh-add ~/.ssh/id_rsa
+- shell: echo "Client= [$SSH_CLIENT] Sock= [$SSH_AUTH_SOCK]"
+- shell: eval `ssh-agent -s`
+
+- name: Test connection to bitbucket
+  command: ssh -T git@bitbucket.org
+
+# Clone repo
+- name: Clone Repository
+  git: repo=git@bitbucket.org:project-app/project-site.git dest={{project_files}} accept_hostkey=true force=yes
+
+# Install project
+- name: install dependencies
+  shell: npm install
+  args:
+    chdir: "{{ project_files }}/code/backend/api"
+
+- name: install dependencies - dao
+  shell: npm install
+  args:
+    chdir: "{{ project_files }}/code/backend/dao"
+
+- name: install dependencies - shared
+  shell: npm install
+  args:
+    chdir: "{{ project_files }}/code/backend/shared"
+
+- name: install dependencies - scheduler
+  shell: npm install
+  args:
+    chdir: "{{ project_files }}/code/backend/scheduler"
+
+- name: install dependencies frontend
+  shell: npm install
+  args:
+    chdir: "{{ project_files }}/code/frontend"

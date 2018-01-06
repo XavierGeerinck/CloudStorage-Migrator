@@ -1,0 +1,44 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name {{ api_url }};
+
+    location / {
+        proxy_pass http://{{ api_ip }}:{{ api_port }};
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    ##
+	# HTTPS Letsencrypt (make sure to run setup_letsencrypt)
+	##
+	location /.well-known/acme-challenge {
+        default_type "text/plain";
+        root         /tmp/letsencrypt;
+        autoindex    on;
+    }
+}
+
+server {
+    listen 443 ssl default_server;
+    server_name {{ api_url }};
+
+    location / {
+        proxy_pass http://{{ api_ip }}:{{ api_port }};
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    ##
+	# SSL Configuration
+	##
+    ssl_certificate /etc/letsencrypt/live/{{ api_url }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ api_url }}/privkey.pem;
+}

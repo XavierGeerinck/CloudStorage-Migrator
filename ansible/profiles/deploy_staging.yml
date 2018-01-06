@@ -1,0 +1,29 @@
+---
+- hosts: 
+    - staging
+  vars_files:
+    - settings.yml
+  vars:
+    - project_environment: staging
+    - project_api_url: staging.api.project.be
+    - project_api_url: 127.0.0.1
+    - project_api_port: 4001
+    - project_frontend_url: staging.project.be
+    - project_frontend_url: 127.0.0.1
+    - project_frontend_port: 3000
+    - project_dbname: project_staging
+    - project_db_url: mysql://root:root@localhost:3306/project_staging
+    - project_files: /home/ubuntu/project-src
+  roles:
+    - project_general
+  tasks: 
+    - block:
+      - name: API - Restarting backend_{{ project_environment }}
+        shell: systemctl restart project_api_{{ project_environment }}
+      - name: FRONTEND - Restarting frontend_{{ project_environment }}
+        shell: systemctl restart project_frontend_{{ project_environment }}
+      become: true
+      become_method: sudo
+      become_user: root
+
+      

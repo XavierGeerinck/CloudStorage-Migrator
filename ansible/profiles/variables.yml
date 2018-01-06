@@ -1,0 +1,19 @@
+# Basic Machine Specs
+cpus: 1 # The cpus available (Mac: sysctl -n hw.ncpu, Linux: nproc)
+
+# MySQL Settings
+mariadb_version: 10.2 # Only major versions, minor is automatically
+mysql_port: 3306
+mysql_root_password: root
+server_hostname: localhost
+dbuser: root
+dbpass: root
+
+# MySQL my.cnf settings
+mysql_max_allowed_packet: 128M
+innodb_file_per_table: innodb_file_per_table
+mysql_character_set_server: utf8
+mysql_collation_server: utf8_general_ci
+
+# Swap file creation
+swap_size_in_m: 2048 # 1Gb Swap (should be double the RAM)
