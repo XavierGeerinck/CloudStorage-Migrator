@@ -5,7 +5,8 @@ Tool to Migrate between Cloud Platforms
 ### Application
 1. Navigate into the `./application` folder with `cd application/`
 2. Run `npm install`
-3. Run `npm run electron-dev` to start the application in development mode
+3. Change the variables in `./src/providers/<provider>/configuration.js` towards your own URLs
+4. Run `npm run electron-dev` to start the application in development mode
 
 > Note: The application can only start in a UNIX shell, and therefor only Works on MAC and Linux. For Windows use the Bash subsystem - we depend on a environment variable.
 
