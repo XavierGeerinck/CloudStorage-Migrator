@@ -25,6 +25,6 @@ Tool to Migrate between Cloud Platforms
 
 ## Documentation
 ### OneDrive
-Permission/Scope: https://docs.microsoft.com/en-us/onedrive/developer/rest-api/getting-started/msa-oauth
-Get all items: https://graph.microsoft.com/v1.0/me/drive/root/children
-Tester: https://developer.microsoft.com/en-us/graph/graph-explorer#
+* Permission/Scope: https://docs.microsoft.com/en-us/onedrive/developer/rest-api/getting-started/msa-oauth
+* Get all items: https://graph.microsoft.com/v1.0/me/drive/root/children
+* Tester: https://developer.microsoft.com/en-us/graph/graph-explorer#
