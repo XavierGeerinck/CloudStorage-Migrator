@@ -83,7 +83,7 @@ class App extends React.Component {
           <GoogleDriveFolderExplorer
             style={{ flex: 1 }}
             accessToken={localStorage.getItem(localStorageKeys.token)}
-            onAuthError={err => ProviderGoogle.handlers.handleAuthError(err)}
+            onAuthError={err => ProviderGoogle.handlers.handleAuthError(err).then(() => this.setState())}
             onSelectFolder={folder => this.setState({ selectedFolder: folder })}
           />
         </div>

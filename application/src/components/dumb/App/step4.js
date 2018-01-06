@@ -116,15 +116,16 @@ class App extends React.Component {
 
     // Preprocessing
     // Note: in this step we just get the count of folders below the main folder
+    // TODO: This is not correct yet since it takes to long, some workaround should be found
     // this.setState({ isPreProcessing: true });
     // let rootFolderFolderCount = await this.props.source.provider.api.getFolders(this.props.source.folder.id);
     // this.setState({ isPreProcessing: false, rootFoldersProcessed: 0 });
  
-    // // Actual sync
-    // await SyncUtil.sync(this.props.source, this.props.destination, this);
-    // console.log('DONE - Congrats');
+    // Actual sync
+    await SyncUtil.sync(this.props.source, this.props.destination, this);
 
-    // this.props.onClickContinue(this.state.filesSynced, this.state.countFilesToSync);
+    // We are done syncing, go to the next step
+    this.props.onClickContinue(this.state.filesSynced, this.state.countFilesToSync);
   }
 
   render() {

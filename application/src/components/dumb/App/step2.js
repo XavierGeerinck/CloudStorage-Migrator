@@ -83,7 +83,7 @@ class App extends React.Component {
           <OneDriveFolderExplorer
             style={{ flex: 1 }}
             accessToken={localStorage.getItem(localStorageKeys.token)}
-            onAuthError={err => ProviderMicrosoft.handlers.handleAuthError(err)}
+            onAuthError={err => ProviderMicrosoft.handlers.handleAuthError(err).then(() => this.setState())}
             onSelectFolder={folder => this.setState({ selectedFolder: folder })}
           />
         </div>
